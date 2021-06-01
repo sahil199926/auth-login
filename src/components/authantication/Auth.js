@@ -5,14 +5,14 @@ import Admin from '../admin/Admin';
 import User from '../user/User';
 
 function Auth() {
-    const histore = useHistory();
+   
 
     const AdminLogin = ({ component: Component, ...rest }) => {
-
+const admin=JSON.parse(localStorage.getItem('admin'))
         return (
             <Route
                 {...rest}
-                render={props=>'a' === 'a' ?
+                render={props=>admin ?
                     <Component {...props} /> :
                     <Redirect
                         to={{
@@ -29,11 +29,11 @@ function Auth() {
 
     }
     const UserLogin = ({ component: Component, ...rest }) => {
-
+        const user= JSON.parse(localStorage.getItem('user'));
         return (
             <Route
                 {...rest}
-                render={props=>'b' === 'a' ?
+                render={props=>user ?
                     <Component {...props} /> :
                     <Redirect
                         to={{
